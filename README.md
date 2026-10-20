@@ -1,4 +1,4 @@
-# heart-disease-mlops
+# Heart-Disease-Mlops
 MlOps assignment 1
 
 | Field | Details |
@@ -7,7 +7,7 @@ MlOps assignment 1
 | **BITS ID:** | 2025ct05070@wilp.bits-pilani.ac.in |
 | **Date:** | 06/20/2026 |
 
-## 📌 Submission Resources
+## Submission Resources
 
 * 📄 **[Final Project Report](PASTE_YOUR_GOOGLE_DRIVE_REPORT_LINK_HERE)**
 * 🎥 **[Project Demonstration Video](PASTE_YOUR_GOOGLE_DRIVE_VIDEO_LINK_HERE)**
