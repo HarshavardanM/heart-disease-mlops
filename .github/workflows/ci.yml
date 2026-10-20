@@ -27,3 +27,6 @@ jobs:
 
       - name: Run API tests
         run: python -m pytest tests/test_api.py -v
+
+      - name: Build Docker image
+        run: docker build -t heart-disease-api:ci .
