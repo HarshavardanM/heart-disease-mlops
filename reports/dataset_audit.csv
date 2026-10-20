@@ -1,0 +1,5 @@
+dataset,filename,rows,columns,missing_cells,missing_target,duplicate_rows,missing_percentage,ca_missing,thal_missing,slope_missing
+Cleveland,processed.cleveland.data,303,14,6,0,0,0.14,4,2,0
+Hungarian,processed.hungarian.data,294,14,782,0,1,19.0,291,266,190
+Switzerland,processed.switzerland.data,123,14,273,0,0,15.85,118,52,17
+VA Long Beach,processed.va.data,200,14,698,0,1,24.93,198,166,102

@@ -1,0 +1,27 @@
+{
+  "selected_model": "Random Forest",
+  "best_parameters": {
+    "classifier__class_weight": "balanced",
+    "classifier__max_depth": 5,
+    "classifier__min_samples_leaf": 4,
+    "classifier__n_estimators": 300
+  },
+  "input_features": [
+    "age",
+    "sex",
+    "cp",
+    "trestbps",
+    "chol",
+    "fbs",
+    "restecg",
+    "thalach",
+    "exang",
+    "oldpeak",
+    "slope",
+    "ca",
+    "thal"
+  ],
+  "target_definition": "0 = no disease; 1 = disease present",
+  "dataset": "UCI Heart Disease - Cleveland",
+  "random_state": 42
+}

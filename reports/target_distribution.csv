@@ -1,0 +1,26 @@
+dataset,target_type,target_value,count
+Cleveland,original_num,0,164
+Cleveland,original_num,1,55
+Cleveland,original_num,2,36
+Cleveland,original_num,3,35
+Cleveland,original_num,4,13
+Cleveland,binary,0,164
+Cleveland,binary,1,139
+Hungarian,original_num,0,188
+Hungarian,original_num,1,106
+Hungarian,binary,0,188
+Hungarian,binary,1,106
+Switzerland,original_num,0,8
+Switzerland,original_num,1,48
+Switzerland,original_num,2,32
+Switzerland,original_num,3,30
+Switzerland,original_num,4,5
+Switzerland,binary,0,8
+Switzerland,binary,1,115
+VA Long Beach,original_num,0,51
+VA Long Beach,original_num,1,56
+VA Long Beach,original_num,2,41
+VA Long Beach,original_num,3,42
+VA Long Beach,original_num,4,10
+VA Long Beach,binary,0,51
+VA Long Beach,binary,1,149
