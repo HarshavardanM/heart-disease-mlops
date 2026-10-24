@@ -1,45 +1,41 @@
 # Monitoring and Observability
 
-## 1. Application Health
+## 1. API Health and Request Metrics
 
-The FastAPI application exposes a `/health` endpoint that reports whether the application is running and the model is loaded. Kubernetes readiness and liveness probes use this endpoint to check application health.
+The Heart Disease prediction API is implemented using FastAPI. It exposes a `/health` endpoint to report application and model availability, and a `/metrics` endpoint containing Prometheus-compatible metrics. The API is instrumented using `prometheus-fastapi-instrumentator` to collect HTTP request metrics.
 
-## 2. Application Logging
+## 2. Kubernetes Deployment
 
-Uvicorn provides application and HTTP request logs. Logs from a running Docker container can be inspected using:
+The API runs in a local Kubernetes cluster. A Kubernetes Deployment manages the API pod, and a NodePort Service exposes the application within the local development environment. Readiness and liveness probes use the `/health` endpoint.
 
-```powershell
-docker logs heart-disease-api-container
-```
+The deployment uses the Docker image `heart-disease-api:v2`, which includes the Prometheus instrumentation.
 
-For Kubernetes, application logs can be viewed using `kubectl logs`.
+## 3. Prometheus Integration
 
-## 3. Prometheus Metrics
+Prometheus is installed using the `kube-prometheus-stack` Helm chart. A ServiceMonitor in the `monitoring` namespace discovers the API Service and scrapes its `/metrics` endpoint every 15 seconds.
 
-The API is instrumented to expose Prometheus metrics through the `/metrics` endpoint. A Kubernetes Service exposes the application, and a ServiceMonitor in the `monitoring` namespace configures Prometheus to scrape the service's metrics endpoint at 15-second intervals.
-
-The monitoring configuration was verified using the Prometheus query:
+The API target was verified using the Prometheus query:
 
 ```promql
 up{service="heart-disease-api-service"}
 ```
 
-A value of `1` indicates that Prometheus successfully scraped the API target; a value of `0` indicates a scrape failure for that target.
-
-The `http_requests_total` metric records HTTP request counts with labels such as endpoint, HTTP method, and status category. PromQL queries can calculate request rates and inspect HTTP 5xx responses.
+The current API target reports a value of `1`, indicating that Prometheus can successfully scrape its metrics endpoint. Historical or removed pod instances may appear in time-series graphs for part of the selected time range.
 
 ## 4. Grafana Dashboard
 
-A Grafana dashboard visualizes API availability, request rate by endpoint, cumulative requests by endpoint, and HTTP server errors. The dashboard uses Prometheus as its data source.
+Grafana visualizes the API's availability, request rate by endpoint, total requests by endpoint, and HTTP server errors. The availability panel uses the following PromQL expression:
 
-A zero value in the HTTP server errors panel indicates that no matching HTTP 5xx responses were observed during the selected query window. It does not guarantee that every possible application or model error has been detected.
+```promql
+max(up{service="heart-disease-api-service"}) or vector(0)
+```
 
-## 5. Model Evaluation
+The request panels help demonstrate API activity, while the HTTP server error panel tracks server-side HTTP errors. A value of zero for server errors is expected when no HTTP 5xx responses have occurred during the selected period.
 
-The project records model evaluation metrics such as accuracy, precision, recall, F1-score, and ROC-AUC during model development. These are evaluation results, not live production model-performance metrics.
+## 5. Testing and Operational Verification
 
-## 6. Limitations and Future Work
+The API test suite contains four tests covering the root endpoint, health endpoint, prediction endpoint, and rejection of an invalid age. All four tests passed locally. Kubernetes pod and Service status, API health, and Prometheus target health were also checked.
 
-This is a local educational deployment, not a production clinical system. Prometheus and Grafana monitor service availability and HTTP activity; they do not establish clinical safety or detect every model failure.
+## 6. Limitations and Future Improvements
 
-Future improvements could include latency percentiles, structured logging, alert rules, input-data validation metrics, drift detection, and monitoring of model performance when reliable ground-truth labels become available.
+This is a local educational deployment rather than a production clinical system. Prometheus and Grafana provide basic operational visibility, but they do not establish model accuracy, fairness, or clinical safety. Further improvements could include latency percentile dashboards, alert rules, structured logging, input-data drift monitoring, and model-performance monitoring when reliable outcome labels become available.
