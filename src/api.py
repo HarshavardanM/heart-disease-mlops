@@ -1,5 +1,5 @@
-
 from pathlib import Path
+from prometheus_fastapi_instrumentator import Instrumentator
 
 import joblib
 import pandas as pd
@@ -20,6 +20,7 @@ app = FastAPI(
     version="1.0.0",
 )
 
+Instrumentator().instrument(app).expose(app)
 
 class PatientFeatures(BaseModel):
     age: float = Field(ge=0, le=120)
