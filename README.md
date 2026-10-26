@@ -9,8 +9,8 @@ MlOps assignment 1
 
 ## Submission Resources
 
-* 📄 **[Final Project Report]([PASTE_YOUR_GOOGLE_DRIVE_REPORT_LINK_HERE](https://docs.google.com/presentation/d/1n-AqDdqcBkxU5zCZ1kOSuTHT1BmUI4kP/edit?usp=sharing&ouid=106075079654423984349&rtpof=true&sd=true))**
-* 🎥 **[Project Demonstration Video]([PASTE_YOUR_GOOGLE_DRIVE_VIDEO_LINK_HERE](https://drive.google.com/file/d/10nUXeItmeXC6uga8Fnk4WTZ-j33BAORl/view?usp=sharing))**
+* 📄 **[Final Project Report](https://docs.google.com/presentation/d/1n-AqDdqcBkxU5zCZ1kOSuTHT1BmUI4kP/edit?usp=sharing&ouid=106075079654423984349&rtpof=true&sd=true)**
+* 🎥 **[Project Demonstration Video](https://drive.google.com/file/d/10nUXeItmeXC6uga8Fnk4WTZ-j33BAORl/view?usp=sharing)**
 * 🔗 **[GitHub Repository](https://github.com/HarshavardanM/heart-disease-mlops)**
 * ⚙️ **[GitHub Actions — CI Test Results](https://github.com/HarshavardanM/heart-disease-mlops/actions)**
 
